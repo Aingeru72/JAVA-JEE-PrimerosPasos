@@ -14,9 +14,14 @@ public class EjercicioMesas {
 		Mesa mesaAnder = new Mesa(1, 2, "custom", 1);
 
 		System.out.println(mesaIzaskun);
+		System.out.println("La mesa de Izaskun cuesta: " + Mesa.getPrecio(mesaIzaskun) + "€");
 		System.out.println(mesaMikel);
+		System.out.println("La mesa de Mikel cuesta: " + Mesa.getPrecio(mesaMikel) + "€");
 		System.out.println(mesaAingeru);
+		System.out.println("La mesa de Aingeru cuesta: " + Mesa.getPrecio(mesaAingeru) + "€");
 		System.out.println(mesaJoseba);
+		System.out.println("La mesa de Joseba cuesta: " + Mesa.getPrecio(mesaJoseba) + "€");
 		System.out.println(mesaAnder);
+		System.out.println("La mesa de Ander cuesta: " + Mesa.getPrecio(mesaAnder) + "€");
 	}
 }

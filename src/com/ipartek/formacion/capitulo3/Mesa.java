@@ -7,18 +7,18 @@ package com.ipartek.formacion.capitulo3;
 public class Mesa {
 
 	// Constantes
-	final int PRECIO_PATA = 1;
-	final int PRECIO_M2 = 5;
-	final int PRECIO_MATERIAL_PLASTICO = 2;
-	final int PRECIO_MATERIAL_MADERA = 4;
-	final int PRECIO_MATERIAL_ALUMINIO = 5;
-	final int PRECIO_MATERIAL_ACERO = 6;
-	final int PRECIO_COLOR_CUSTOM = 23;
+	final static int PRECIO_PATA = 1;
+	final static int PRECIO_M2 = 5;
+	final static int PRECIO_MATERIAL_PLASTICO = 2;
+	final static int PRECIO_MATERIAL_MADERA = 4;
+	final static int PRECIO_MATERIAL_ALUMINIO = 5;
+	final static int PRECIO_MATERIAL_ACERO = 6;
+	final static int PRECIO_COLOR_CUSTOM = 23;
 	final int MATERIAL_PLASTICO = 1;
 	final int MATERIAL_MADERA = 2;
 	final int MATERIAL_ALUMINIO = 3;
 	final int MATERIAL_ACERO = 4;
-	final String PRECIO_COLOR_NAME_CUSTOM = "custom";
+	final static String PRECIO_COLOR_NAME_CUSTOM = "custom";
 
 	// 4. Definición de atributos
 	private int numPatas;
@@ -96,7 +96,36 @@ public class Mesa {
 	}
 
 	// 5.3 Otros métodos
-	int getPrecio() {
-		return 0;
+	static int getPrecio(Mesa mesa) {
+		int precio = 0;
+
+		// Calculamos el precio por pata
+		precio += mesa.getNumPatas() * PRECIO_PATA;
+		// Calculamos el precio por m2
+		precio += mesa.getDimension() * PRECIO_M2;
+		// Calculamos precio por color
+		if (PRECIO_COLOR_NAME_CUSTOM.equals(mesa.getColor())) {
+			precio += PRECIO_COLOR_CUSTOM;
+		}
+		// Calculamos precio por material
+		switch (mesa.getMaterial()) {
+		case 1: // Plástico
+			precio += PRECIO_MATERIAL_PLASTICO;
+			break;
+		case 2: // Madera
+			precio += PRECIO_MATERIAL_MADERA;
+			break;
+		case 3: // Aluminio
+			precio += PRECIO_MATERIAL_ALUMINIO;
+			break;
+		case 4: // Acero
+			precio += PRECIO_MATERIAL_ACERO;
+			break;
+
+		default: // Optional
+			break;
+		}
+
+		return precio;
 	}
 }
