@@ -29,7 +29,7 @@ public class CalculadorPrecioMesa {
 			precio = mesa.getPrecio();
 			imprimirFactura(patas, dimension, color, material, precio);
 		} else {
-			System.out.println("No podemos construir una mesa con ese material");
+			System.out.println("ERROR: No podemos construir una mesa de " + material);
 		}
 
 	}
@@ -44,7 +44,7 @@ public class CalculadorPrecioMesa {
 		System.out.println("¿Color?");
 		color = sc.next();
 
-		System.out.println("¿Material?");
+		System.out.println("¿Material? [Plástico, Madera, Aluminio, Acero]");
 		material = sc.next();
 	}
 
