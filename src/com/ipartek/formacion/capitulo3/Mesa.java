@@ -14,11 +14,12 @@ public class Mesa {
 	final static int PRECIO_MATERIAL_ALUMINIO = 5;
 	final static int PRECIO_MATERIAL_ACERO = 6;
 	final static int PRECIO_COLOR_CUSTOM = 23;
-	final int MATERIAL_PLASTICO = 1;
-	final int MATERIAL_MADERA = 2;
-	final int MATERIAL_ALUMINIO = 3;
-	final int MATERIAL_ACERO = 4;
 	final static String PRECIO_COLOR_NAME_CUSTOM = "custom";
+
+	public final int MATERIAL_PLASTICO = 1;
+	public final int MATERIAL_MADERA = 2;
+	public final int MATERIAL_ALUMINIO = 3;
+	public final int MATERIAL_ACERO = 4;
 
 	// 4. Definición de atributos
 	private int numPatas;
@@ -37,14 +38,14 @@ public class Mesa {
 		this.numPatas = 4;
 		this.dimension = 1;
 		this.color = "blanco";
-		this.material = 2;
+		this.material = MATERIAL_MADERA;
 	}
 
 	/**
 	 * Crear nueva instancia del tipo Mesa
 	 * 
 	 * @param numPatas
-	 *            : entero con el número de patas, SI es negativo se inicializa a 0
+	 *            entero con el número de patas, SI es negativo se inicializa a 0
 	 * @author Aingeru Sanchez
 	 */
 	public Mesa(int numPatas, int dimension, String color, int material) {
@@ -61,6 +62,12 @@ public class Mesa {
 		return numPatas;
 	}
 
+	/**
+	 * Asignar el número de patas de la mesa; IF numPatas < 0 => 0 else numPatas
+	 * 
+	 * @param numPatas:
+	 *            entero que muestra el número de patas
+	 */
 	public void setNumPatas(int numPatas) {
 		this.numPatas = (numPatas < 0) ? 0 : numPatas;
 	}
@@ -96,19 +103,27 @@ public class Mesa {
 	}
 
 	// 5.3 Otros métodos
-	static int getPrecio(Mesa mesa) {
+
+	/**
+	 * Calculamos el precio de la mesa en funcion de los materiales usados
+	 * 
+	 * @param mesa:
+	 *            Objeto con atributos de materiales asignados
+	 * @return: entero con el precio de la mesa
+	 */
+	public int getPrecio() {
 		int precio = 0;
 
 		// Calculamos el precio por pata
-		precio += mesa.getNumPatas() * PRECIO_PATA;
+		precio += this.getNumPatas() * PRECIO_PATA;
 		// Calculamos el precio por m2
-		precio += mesa.getDimension() * PRECIO_M2;
+		precio += this.getDimension() * PRECIO_M2;
 		// Calculamos precio por color
-		if (PRECIO_COLOR_NAME_CUSTOM.equals(mesa.getColor())) {
+		if (PRECIO_COLOR_NAME_CUSTOM.equals(this.getColor())) {
 			precio += PRECIO_COLOR_CUSTOM;
 		}
 		// Calculamos precio por material
-		switch (mesa.getMaterial()) {
+		switch (this.getMaterial()) {
 		case 1: // Plástico
 			precio += PRECIO_MATERIAL_PLASTICO;
 			break;
@@ -121,7 +136,6 @@ public class Mesa {
 		case 4: // Acero
 			precio += PRECIO_MATERIAL_ACERO;
 			break;
-
 		default: // Optional
 			break;
 		}
