@@ -51,16 +51,4 @@ public class HacerPedido {
 
 	}
 
-//	private static float actualizarPrecio(int iPrecioIngrediente) {
-//		float result = 0;
-//
-//		if (iPrecioIngrediente != -1) {
-//			result = Hamburguesa.INGREDIENTES_PRECIOS[iPrecioIngrediente];
-//		} else {
-//			System.out.println("Ha ocurrido un error al procesar su pedido");
-//		}
-//
-//		return result;
-//	}
-
 }
