@@ -16,10 +16,10 @@ public class Mesa {
 	final static int PRECIO_COLOR_CUSTOM = 23;
 	final static String PRECIO_COLOR_NAME_CUSTOM = "custom";
 
-	public final int MATERIAL_PLASTICO = 1;
-	public final int MATERIAL_MADERA = 2;
-	public final int MATERIAL_ALUMINIO = 3;
-	public final int MATERIAL_ACERO = 4;
+	public static final int MATERIAL_PLASTICO = 1;
+	public static final int MATERIAL_MADERA = 2;
+	public static final int MATERIAL_ALUMINIO = 3;
+	public static final int MATERIAL_ACERO = 4;
 
 	// 4. Definición de atributos
 	private int numPatas;
@@ -69,7 +69,7 @@ public class Mesa {
 	 *            entero que muestra el número de patas
 	 */
 	public void setNumPatas(int numPatas) {
-		this.numPatas = (numPatas < 0) ? 0 : numPatas;
+		this.numPatas = (numPatas <= 0) ? 1 : numPatas;
 	}
 
 	public int getDimension() {
@@ -119,7 +119,7 @@ public class Mesa {
 		// Calculamos el precio por m2
 		precio += this.getDimension() * PRECIO_M2;
 		// Calculamos precio por color
-		if (PRECIO_COLOR_NAME_CUSTOM.equals(this.getColor())) {
+		if (PRECIO_COLOR_NAME_CUSTOM.equalsIgnoreCase(this.getColor())) {
 			precio += PRECIO_COLOR_CUSTOM;
 		}
 		// Calculamos precio por material
