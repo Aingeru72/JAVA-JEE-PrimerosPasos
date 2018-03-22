@@ -40,12 +40,12 @@ public class Hamburguesa {
 	 *            String con el nombre del ingrediente
 	 * @return: posición del ingrediente. Si no lo encuentra devuelve -1
 	 */
-	public int getPriceOfIngredient(String ingrediente) {
+	public static int getPriceOfIngredient(String ingrediente) {
 		int index = -1;
 		int i = 0;
 
 		while (index == -1) {
-			if (this.INGREDIENTES[i].equalsIgnoreCase(ingrediente)) {
+			if (Hamburguesa.INGREDIENTES[i].equalsIgnoreCase(ingrediente)) {
 				index = i;
 			}
 			i++;
@@ -54,11 +54,30 @@ public class Hamburguesa {
 		return index;
 	}
 
-	// TODO: crear método que te devuelve el precio de la hamburguesa pasada por
-	// parametro
-	public float getPrecio(Hamburguesa burguer) {
+	/**
+	 * Devuelve el precio de la hamburguesa compuesta por el usuario
+	 * 
+	 * @param ingredientes:
+	 *            Array de ingredientes
+	 * @return: float con el precio de la hamburguesa
+	 */
+	public float getPrecio(String[] ingredientes) {
+		float precio = 0;
+		int i = 0;
+		int posIngrdiente = 0;
+		boolean fin = false;
 
-		return 0;
+		while (i < ingredientes.length && !fin) {
+			if (ingredientes[i] != null) {
+				posIngrdiente = Hamburguesa.getPriceOfIngredient(ingredientes[i]);
+				precio += Hamburguesa.INGREDIENTES_PRECIOS[posIngrdiente];
+			} else {
+				fin = true;
+			}
+			i++;
+		}
+
+		return precio;
 	}
 
 }
